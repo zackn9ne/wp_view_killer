@@ -4,20 +4,23 @@ Plugin Name: View Killer
 */
 
 function where_are_we( $hook ) {
+    $screen = get_current_screen();
 
+  echo "asdf " . $hook . "screen" . $screen->post_type;    // This bad boy forces HTML edit mode yes
+  add_filter( 'wp_default_editor', create_function('', 'return "visual";') );
+
+  if ( $hook == 'post.php' && $screen->post_type == 'post' ) {
   // if ( $hook == 'post.php' && $screen->post_type != 'post' ) {
 
-  //      //If You're In The Right Place Alert this notice
-  //      echo 'you are on a POST you should be VISUAL';
+       //If You're In The Right Place Alert this notice
+       echo 'you are on a POST you should be VISUAL';
 
-  //       // This bad boy forces VISUAL edit mode yes
-  //       add_filter( 'wp_default_editor', create_function('', 'return "visual";') );
+        // This bad boy forces VISUAL edit mode yes
+        add_filter( 'wp_default_editor', create_function('', 'return "visual";') );
 
-  //   } 
+    } 
 
-  //   else
-
-      if ( $hook == 'post.php' && $screen->post_type != 'w2dc_listing' ) {
+    elseif ( $hook == 'post.php' && $screen->post_type == 'w2dc_listing' ) {
        
        //If You're In The Right Place Alert this notice
        echo 'you are on a w2dc_listing';
@@ -47,6 +50,7 @@ function where_are_we( $hook ) {
     
     } else {
         //Die  
+      echo "dead";
     }
  
 

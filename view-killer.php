@@ -5,12 +5,30 @@ Plugin Name: View Killer
 
 function where_are_we( $hook ) {
 
-    if ( $hook == 'post.php' && $screen->post_type != 'w2dc_listing' ) {
+  // if ( $hook == 'post.php' && $screen->post_type != 'post' ) {
+
+  //      //If You're In The Right Place Alert this notice
+  //      echo 'you are on a POST you should be VISUAL';
+
+  //       // This bad boy forces VISUAL edit mode yes
+  //       add_filter( 'wp_default_editor', create_function('', 'return "visual";') );
+
+  //   } 
+
+  //   else
+
+      if ( $hook == 'post.php' && $screen->post_type != 'w2dc_listing' ) {
+       
        //If You're In The Right Place Alert this notice
        echo 'you are on a w2dc_listing';
+
+       //If You're In The Right Place Peg the User to HTML when they get here
+       // This bad boy forces HTML edit mode yes
+       add_filter( 'wp_default_editor', create_function('', 'return "html";') );
+
        
        //If You're In The Right Place Run This Bunch Of JavaScript
-       wp_enqueue_script( 'avada-child-stylesheet', plugins_url( 'view-killer/myscript.js' ) );
+       wp_enqueue_script( 'avada-child-stylesheet', plugins_url( 'wp_view_killer/myscript.js' ) );
        
        // If You're In The Right Place Convert Line Breaks To BR's
         function amytheme_tinymce_settings( $tinymce_init_settings ) {
@@ -26,8 +44,9 @@ function where_are_we( $hook ) {
             return nl2br( $content );
         }
 
+    
     } else {
-    //Page die
+        //Die  
     }
  
 

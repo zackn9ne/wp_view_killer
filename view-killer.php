@@ -6,14 +6,14 @@ Plugin Name: View Killer
 function where_are_we( $hook ) {
     $screen = get_current_screen();
 
-  echo "asdf " . $hook . "screen" . $screen->post_type;    // This bad boy forces HTML edit mode yes
-  add_filter( 'wp_default_editor', create_function('', 'return "visual";') );
+  // force visual mode
+  // add_filter( 'wp_default_editor', create_function('', 'return "visual";') );
 
   if ( $hook == 'post.php' && $screen->post_type == 'post' ) {
   // if ( $hook == 'post.php' && $screen->post_type != 'post' ) {
 
        //If You're In The Right Place Alert this notice
-       echo 'you are on a POST you should be VISUAL';
+       //------> echo 'you are on a POST you should be VISUAL';
 
         // This bad boy forces VISUAL edit mode yes
         add_filter( 'wp_default_editor', create_function('', 'return "visual";') );
@@ -23,7 +23,7 @@ function where_are_we( $hook ) {
     elseif ( $hook == 'post.php' && $screen->post_type == 'w2dc_listing' ) {
        
        //If You're In The Right Place Alert this notice
-       echo 'you are on a w2dc_listing';
+       //------> echo 'you are on a w2dc_listing';
 
        //If You're In The Right Place Peg the User to HTML when they get here
        // This bad boy forces HTML edit mode yes

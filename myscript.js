@@ -1,4 +1,3 @@
-console.log("non permitted visual  page detected");
 $j=jQuery.noConflict();
 
 $j(document).ready(function() {
